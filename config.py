@@ -170,7 +170,7 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
-dgroups_key_binder = None
+dgroups_key_binder = None``
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
 bring_front_click = False
@@ -204,3 +204,11 @@ auto_minimize = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+# here all auto start part is
+# lazy.to_screen(n) here n is desktop number i think
+# lazy.spawn("name") here name is command name
+def autostart():
+    lazy.to_screen(0)
+    lazy.spawn("picom")
