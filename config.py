@@ -40,9 +40,6 @@ browser = "librewolf"
 file_manager = "dolphin"
 music = "spotify"
 
-# if you want to find what is the key name use xev
-# Volume
-
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -89,6 +86,9 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    #
+    # if you want to find what is the key name use xev
+    # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
     Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
@@ -98,7 +98,13 @@ keys = [
     # xkill
     Key([mod], "x", lazy.spawn("xkill")),
     # app_launcher
-    Key([], "Alt_L", "space", lazy.spawn("kitty")),
+    #    Key(
+    #        [Alt_L],
+    #        "space",
+    #        lazy.spawn(
+    #            "rofi -combi-modi drun -font 'Fira Code Nerd Font 12' -show drun -icon-theme 'Papirus' -show-icons -width 32"
+    #        ),
+    #    ),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -127,15 +133,47 @@ for i in groups:
         ]
     )
 
+background = "#1f1f1f"
+foreground = "#ffffff"
+
+normal = {
+    "black": "#1f1f1f",
+    "red": "#F92672",
+    "green": "#A6E22E",
+    "yellow": "#FD971F",
+    "blue": "#66D9EF",
+    "magenta": "#AE81FF",
+    "cyan": "#2aa198",
+    "white": "#ffffff",
+}
+
+bright = {
+    "black": "#1f1f1f",
+    "red": "#F92672",
+    "green": "#A6E22E",
+    "yellow": "#FD971F",
+    "blue": "#66D9EF",
+    "magenta": "#AE81FF",
+    "cyan": "#2aa198",
+    "white": "#ffffff",
+}
+
+layout_theme = {
+    "border_width": 4,
+    "margin": 8,
+    "border_focus": normal["cyan"],
+    "border_normal": "000000",
+}
+# border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
+    layout.Columns(**layout_theme),
+    # layout.Max(),
     # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
+    layout.Stack(num_stacks=1, **layout_theme),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
+    layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
@@ -231,3 +269,12 @@ wmname = "LG3D"
 def autostart():
     lazy.to_screen(0)
     lazy.spawn("picom")
+
+
+widget_defaults = dict(
+    font="Fira Code Nerd Font",
+    fontsize=12,
+    padding=3,
+)
+
+extension_defaults = widget_defaults.copy()
