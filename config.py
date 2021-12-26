@@ -98,16 +98,16 @@ keys = [
     # xkill
     Key([mod], "x", lazy.spawn("xkill")),
     # app_launcher
-    #    Key(
-    #        [Alt_L],
-    #        "space",
-    #        lazy.spawn(
-    #            "rofi -combi-modi drun -font 'Fira Code Nerd Font 12' -show drun -icon-theme 'Papirus' -show-icons -width 32"
-    #        ),
-    #    ),
+    Key(
+        ["mod1"],
+        "space",
+        lazy.spawn(
+            "rofi -combi-modi drun -font 'Fira Code Nerd Font 12' -show drun -icon-theme 'Papirus' -show-icons -width 32"
+        ),
+    ),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "1234"]
 
 for i in groups:
     keys.extend(
@@ -133,36 +133,10 @@ for i in groups:
         ]
     )
 
-background = "#1f1f1f"
-foreground = "#ffffff"
-
-normal = {
-    "black": "#1f1f1f",
-    "red": "#F92672",
-    "green": "#A6E22E",
-    "yellow": "#FD971F",
-    "blue": "#66D9EF",
-    "magenta": "#AE81FF",
-    "cyan": "#2aa198",
-    "white": "#ffffff",
-}
-
-bright = {
-    "black": "#1f1f1f",
-    "red": "#F92672",
-    "green": "#A6E22E",
-    "yellow": "#FD971F",
-    "blue": "#66D9EF",
-    "magenta": "#AE81FF",
-    "cyan": "#2aa198",
-    "white": "#ffffff",
-}
-
 layout_theme = {
     "border_width": 4,
     "margin": 8,
-    "border_focus": normal["cyan"],
-    "border_normal": "000000",
+    "border_focus": "cyan",
 }
 # border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4
 layouts = [
@@ -188,25 +162,74 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
 screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(),
+                widget.Sep(linewidth=0, padding=8),
+                widget.CurrentLayoutIcon(scale=0.80),
                 widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.WindowName(
+                    font="SF Pro Display",
+                    fontsize=10,
+                    format="{name}",
+                    max_chars=25,
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.Systray(icon_size=18),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=20,
+                ),
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free",
+                    fontsize=18,
+                ),
+                widget.PulseVolume(
+                    font="FiraCode Nerd Font",
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=20,
+                ),
+                widget.TextBox(
+                    font="FiraCode Nerd Font",
+                    fontsize=18,
+                    text="",
+                ),
+                widget.Clock(
+                    font="FiraCode Nerd Font",
+                    fontsize=12,
+                    format="%d-%m-%y",
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=20,
+                ),
+                widget.TextBox(
+                    font="FiraCode Nerd Font",
+                    fontsize=18,
+                    text="",
+                ),
+                widget.Clock(
+                    format="%a %I:%M %p",
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=20,
+                ),
+                widget.Image(
+                    filename="~/Downloads/logo.png",
+                    # mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/stella/.config/rofi/powermenu/powermenu.sh")},
+                    margin=10,
+                ),
+                # widget.QuickExit(),
             ],
             24,
         ),
@@ -262,7 +285,6 @@ auto_minimize = True
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
 
-
 # here all auto start part is
 # lazy.to_screen(n) here n is desktop number i think
 # lazy.spawn("name") here name is command name
@@ -276,5 +298,4 @@ widget_defaults = dict(
     fontsize=12,
     padding=3,
 )
-
 extension_defaults = widget_defaults.copy()
