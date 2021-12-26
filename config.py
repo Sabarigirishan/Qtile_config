@@ -50,7 +50,8 @@ music="spotify"
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 1%+")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
 
-
+# xkill
+    Key([], [mod],"x",lazy.spawn("xkill")),
 
 
 keys = [
