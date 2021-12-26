@@ -34,25 +34,14 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 
 # default apps
-terminal = kitty
+terminal = "kitty"
 app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 12' -show drun -icon-theme 'Papirus' -show-icons -width 32"
 browser = "librewolf"
 file_manager = "dolphin"
-music="spotify"
+music = "spotify"
 
 # if you want to find what is the key name use xev
 # Volume
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
-    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
-
-# Brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 1%+")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
-
-# xkill
-    Key([], [mod],"x",lazy.spawn("xkill")),
-
 
 keys = [
     # Switch between windows
@@ -100,6 +89,16 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
+    # Brightness
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 1%+")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
+    # xkill
+    Key([mod], "x", lazy.spawn("xkill")),
+    # app_launcher
+    Key([], "Alt_L", "space", lazy.spawn("kitty")),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -190,7 +189,7 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
-dgroups_key_binder = None``
+dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
 bring_front_click = False
@@ -232,4 +231,3 @@ wmname = "LG3D"
 def autostart():
     lazy.to_screen(0)
     lazy.spawn("picom")
-
