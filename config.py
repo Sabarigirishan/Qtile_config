@@ -32,7 +32,26 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
+
+# default apps
 terminal = kitty
+app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 12' -show drun -icon-theme 'Papirus' -show-icons -width 32"
+browser = "librewolf"
+file_manager = "dolphin"
+music="spotify"
+
+# if you want to find what is the key name use xev
+# Volume
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
+
+# Brightness
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 1%+")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
+
+
+
 
 keys = [
     # Switch between windows
@@ -212,3 +231,4 @@ wmname = "LG3D"
 def autostart():
     lazy.to_screen(0)
     lazy.spawn("picom")
+
