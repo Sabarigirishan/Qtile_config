@@ -1,9 +1,10 @@
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.widget import *
 
 layout_theme = {
-    "border_width": 4,
+    "border_width": 2,
     "margin": 8,
     "border_focus": "cyan",
 }
@@ -42,18 +43,16 @@ screens = [
         top=bar.Bar(
             [
                 widget.WindowName(
-                    font="SF Pro Display",
-                    fontsize=10,
+                    font="FiraCode Nerd Font",
+                    fontsize=12,
                     format="{name}",
                     max_chars=25,
                 ),
+                widget.TextBox(
+                    text="🕜",
+                ),
                 widget.Clock(
                     format="%a %I:%M %p",
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=20,
                 ),
                 widget.Spacer(),
                 widget.Systray(icon_size=18),
@@ -72,7 +71,10 @@ screens = [
         ),
         bottom=bar.Bar(
             [
-                widget.GroupBox(),
+                widget.GroupBox(
+                    font="FiraCode Nerd Font",
+                    fontsize=10,
+                ),
                 widget.Sep(linewidth=0, padding=8),
                 widget.CurrentLayoutIcon(scale=0.80),
                 widget.Prompt(),
@@ -82,10 +84,19 @@ screens = [
                     size_percent=60,
                     padding=20,
                 ),
+                widget.Net(
+                    font="FiraCode Nerd Font",
+                    fontsize=12,
+                    format=" {down}⬇:⬆{up}",
+                    prefix="b",
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=20,
+                ),
                 widget.TextBox(
-                    text="",
-                    font="FontAwesome 5 Free",
-                    fontsize=18,
+                    text="📢",
                 ),
                 widget.PulseVolume(
                     font="FiraCode Nerd Font",
@@ -96,14 +107,14 @@ screens = [
                     padding=20,
                 ),
                 widget.TextBox(
-                    font="FiraCode Nerd Font",
-                    fontsize=18,
-                    text="",
+                    text="⚡",
                 ),
-                widget.Clock(
+                widget.Battery(
                     font="FiraCode Nerd Font",
                     fontsize=12,
-                    format="%d-%b-%y",
+                    update_interval=30,
+                    show_short_text=False,
+                    format="{percent:1.0%}",
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -111,9 +122,12 @@ screens = [
                     padding=20,
                 ),
                 widget.TextBox(
+                    text="📆",
+                ),
+                widget.Clock(
                     font="FiraCode Nerd Font",
-                    fontsize=18,
-                    text="",
+                    fontsize=12,
+                    format="%d-%b-%y",
                 ),
                 # widget.QuickExit(),
             ],

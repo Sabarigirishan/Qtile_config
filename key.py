@@ -71,6 +71,19 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # app_launcher
+    Key(
+        ["mod1"],
+        "space",
+        lazy.spawn(app_launcher),
+    ),
+    # Send window "go long"
+    Key(
+        [mod],
+        "m",
+        lazy.window.togroup("9", switch_group=True),
+        desc="Switch to & move focused window to group {}".format("9"),
+    ),
     #
     # if you want to find what is the key name use xev
     # Volume
@@ -82,14 +95,6 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
     # xkill
     Key([mod], "x", lazy.spawn("xkill")),
-    # app_launcher
-    Key(
-        ["mod1"],
-        "space",
-        lazy.spawn(
-            "rofi -combi-modi drun -font 'Fira Code Nerd Font 12' -show drun -icon-theme 'Papirus' -show-icons -width 32"
-        ),
-    ),
     #### Media Control ####
     Key([], "XF86AudioPlay", lazy.function(play_pause)),
     Key([], "XF86AudioNext", lazy.function(nexts)),
@@ -98,7 +103,7 @@ keys = [
 ]
 
 
-groups = [Group(i) for i in "1234"]
+groups = [Group(i) for i in "123456789"]
 
 for i in groups:
     keys.extend(

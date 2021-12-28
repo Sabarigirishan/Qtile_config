@@ -1,5 +1,5 @@
 from typing import List  # noqa: F401
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -27,3 +27,8 @@ def stop(qtile):
     qtile.cmd_spawn("playerctl -p spotify stop")
     qtile.cmd_spawn("playerctl -p ncspot stop")
     qtile.cmd_spawn("playerctl -p vlc stop")
+
+
+@hook.subscribe.startup_once
+def start_once():
+    subprocess.call("~/.config.qtile/autostart,sh")
