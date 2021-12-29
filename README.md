@@ -36,9 +36,9 @@ TODO:
 - [x] Brightness control
 - [x] Volume control shortcuts
 - [x] Rofi (app launcher)
-- [ ] Rofi (Powermenu)
+- [x] Rofi (Powermenu)
 - [ ] Rofi (Clipboard)  //  requires rofi-greenclip 
-- [ ] Rofi (Network manager)
+- [x] Rofi (Network manager)
 - [ ] Calendar
 - [ ] Config vim
 - [ ] Config vscodium

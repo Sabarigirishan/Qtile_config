@@ -13,7 +13,8 @@ browser = "librewolf"
 file_manager = "dolphin"
 music = "spotify"
 mod = "mod4"
-
+power_menu = "rofi -show power-menu -modi power-menu:~/.local/bin/rofi-power-menu"
+wifi_menu = "~/.local/bin/rofi-wifi-menu"
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -95,11 +96,8 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
     # xkill
     Key([mod], "x", lazy.spawn("xkill")),
-    #### Media Control ####
-    Key([], "XF86AudioPlay", lazy.function(play_pause)),
-    Key([], "XF86AudioNext", lazy.function(nexts)),
-    Key([], "XF86AudioPrev", lazy.function(prev)),
-    Key([], "XF86AudioStop", lazy.function(stop)),
+    # rofi-power-menu
+    Key(["mod1", "control"], "Delete", lazy.spawn(power_menu)),
 ]
 
 

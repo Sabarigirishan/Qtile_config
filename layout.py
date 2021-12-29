@@ -1,7 +1,7 @@
-from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Match, Screen
 from libqtile.widget import *
+from func import *
 
 layout_theme = {
     "border_width": 2,
@@ -63,7 +63,7 @@ screens = [
                 ),
                 widget.Image(
                     filename="~/Downloads/logo.png",
-                    # mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/sam/.config/rofi/powermenu/powermenu.sh")},
+                    mouse_callbacks={"Button1": rofi_power_menu},
                     margin=3,
                 ),
             ],
@@ -89,6 +89,7 @@ screens = [
                     fontsize=12,
                     format=" {down}⬇:⬆{up}",
                     prefix="b",
+                    mouse_callbacks={"Button1": rofi_network_menu},
                 ),
                 widget.Sep(
                     linewidth=0,

@@ -1,8 +1,13 @@
-from typing import List  # noqa: F401
-from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile import hook
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+from libqtile import qtile
+from libqtile.lazy import lazy
+
+wifi_menu = "~/.local/bin/rofi-wifi-menu /usr/share/rofi/themes/dracula.rasi"
+
+
+def rofi_power_menu():
+    qtile.cmd_spawn("rofi -show power-menu")
 
 
 def play_pause(qtile):
@@ -32,3 +37,7 @@ def stop(qtile):
 @hook.subscribe.startup_once
 def start_once():
     subprocess.call("~/.config.qtile/autostart,sh")
+
+
+def rofi_network_menu():
+    qtile.cmd_spawn("./.config/qtile/rofi-wifi-menu")
