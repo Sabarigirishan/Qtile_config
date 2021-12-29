@@ -1,5 +1,19 @@
 # Qtile_config
-This is my config for my qtile WM.
+This is my config for my qtile WM. A noobs work.
+
+Apps Used:
+- Qtile (WM)
+- Rofi (App launcher)
+- MOC (Music On Console)
+- Spotify 
+- Cava (Music visualizer)
+- Spicetify (Apply custom themes to spotify)
+- noto-fonts-emoji (For emoji of course)
+- Kitty (Terminal emulator)
+- VScodium (text editor)
+- Dracula theme (mostly)
+- fm6000
+- 
 
 TODO:
 
@@ -9,7 +23,7 @@ TODO:
 - [ ] Music player
   - [ ] Spotify
   - [ ] MOCP
-  - [ ] CAVA (it's not a player but added) 
+  - [ ] Cava (it's not a player but added) 
 - [ ] Layout
 - [ ] More widgets
 - [ ] Better comments
@@ -23,7 +37,8 @@ TODO:
 - [x] Volume control shortcuts
 - [x] Rofi (app launcher)
 - [ ] Rofi (Powermenu)
-- [ ] Rofi (advanced)
+- [ ] Rofi (Clipboard)  //  requires rofi-greenclip 
+- [ ] Rofi (Network manager)
 - [ ] Calendar
 - [ ] Config vim
 - [ ] Config vscodium
