@@ -37,9 +37,9 @@ TODO:
 - [x] Volume control shortcuts
 - [x] Rofi (app launcher)
 - [x] Rofi (Powermenu)
-- [ ] Rofi (Clipboard)  //  requires rofi-greenclip 
+- [x] Rofi (Clipboard)  //  requires rofi-greenclip 
 - [x] Rofi (Network manager)
-- [ ] Calendar
+- [ ] Rofi Calendar
 - [ ] Config vim
 - [ ] Config vscodium
 - [ ] Config bashtop

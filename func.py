@@ -1,13 +1,6 @@
 from libqtile import hook
-from libqtile.lazy import lazy
 from libqtile import qtile
 from libqtile.lazy import lazy
-
-wifi_menu = "~/.local/bin/rofi-wifi-menu /usr/share/rofi/themes/dracula.rasi"
-
-
-def rofi_power_menu():
-    qtile.cmd_spawn("rofi -show power-menu")
 
 
 def play_pause(qtile):
@@ -34,10 +27,9 @@ def stop(qtile):
     qtile.cmd_spawn("playerctl -p vlc stop")
 
 
-@hook.subscribe.startup_once
-def start_once():
-    subprocess.call("~/.config.qtile/autostart,sh")
-
-
 def rofi_network_menu():
     qtile.cmd_spawn("./.config/qtile/rofi-wifi-menu")
+
+
+def rofi_power_menu():
+    qtile.cmd_spawn("rofi -show power-menu")

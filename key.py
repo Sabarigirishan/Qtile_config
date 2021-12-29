@@ -1,4 +1,3 @@
-from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -98,6 +97,8 @@ keys = [
     Key([mod], "x", lazy.spawn("xkill")),
     # rofi-power-menu
     Key(["mod1", "control"], "Delete", lazy.spawn(power_menu)),
+    # rofi-clipboard
+    Key([mod], "v", lazy.spawn("rofi -show clipboard")),
 ]
 
 
