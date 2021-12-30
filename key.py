@@ -1,19 +1,16 @@
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
-
-from func import *
+from libqtile import hook
 
 # default apps
 terminal = "kitty"
-app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 12' -show drun -icon-theme 'Papirus' -show-icons -width 32"
 browser = "librewolf"
 file_manager = "dolphin"
 music = "spotify"
 mod = "mod4"
-power_menu = "rofi -show power-menu -modi power-menu:~/.local/bin/rofi-power-menu"
-wifi_menu = "~/.local/bin/rofi-wifi-menu"
+
+
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -75,7 +72,9 @@ keys = [
     Key(
         ["mod1"],
         "space",
-        lazy.spawn(app_launcher),
+        lazy.spawn(
+            "rofi -combi-modi drun -font 'Fira Code Nerd Font 12' -show drun -icon-theme 'Papirus' -show-icons -width 32"
+        ),
     ),
     # Send window "go long"
     Key(
@@ -85,20 +84,28 @@ keys = [
         desc="Switch to & move focused window to group {}".format("9"),
     ),
     #
-    # if you want to find what is the key name use xev
+    # To find what is the key name use xev
     # Volume
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 5%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 5%-")),
     Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
     # Brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 1%+")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 5%+")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
     # xkill
     Key([mod], "x", lazy.spawn("xkill")),
     # rofi-power-menu
-    Key(["mod1", "control"], "Delete", lazy.spawn(power_menu)),
+    Key(
+        ["mod1", "control"],
+        "Delete",
+        lazy.spawn("rofi -show powermenu -modi powermenr:~/./rofi-power-menu"),
+    ),
     # rofi-clipboard
     Key([mod], "v", lazy.spawn("rofi -show clipboard")),
+    # rofi-calc
+    Key([mod], "c", lazy.spawn("rofi -show calc")),
+    # rofi-network-menu
+    Key([mod], "w", lazy.spawn("./.config/qtile/rofi-wifi-menu")),
 ]
 
 

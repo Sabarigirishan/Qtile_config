@@ -1,7 +1,6 @@
 from libqtile import bar, layout, widget
 from libqtile.config import Match, Screen
 from libqtile.widget import *
-from func import *
 
 layout_theme = {
     "border_width": 2,
@@ -63,7 +62,9 @@ screens = [
                 ),
                 widget.Image(
                     filename="~/Downloads/logo.png",
-                    mouse_callbacks={"Button1": rofi_power_menu},
+                    mouse_callbacks={
+                        "Button1": "rofi -show powermenu -modi powermenr:~/./rofi-power-menu"
+                    },
                     margin=3,
                 ),
             ],
@@ -89,7 +90,7 @@ screens = [
                     fontsize=12,
                     format=" {down}⬇:⬆{up}",
                     prefix="b",
-                    mouse_callbacks={"Button1": rofi_network_menu},
+                    mouse_callbacks={"Button1": "./.config/qtile/rofi-wifi-menu"},
                 ),
                 widget.Sep(
                     linewidth=0,

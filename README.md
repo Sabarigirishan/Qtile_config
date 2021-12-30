@@ -35,14 +35,18 @@ TODO:
 - [ ] Music control shortcuts
 - [x] Brightness control
 - [x] Volume control shortcuts
-- [x] Rofi (app launcher)
-- [x] Rofi (Powermenu)
-- [x] Rofi (Clipboard)  //  requires rofi-greenclip 
-- [x] Rofi (Network manager)
-- [ ] Rofi Calendar
+- [x] Rofi for app launcher
+- [x] Rofi for Powermenu
+- [x] Rofi for Clipboard  //  requires rofi-greenclip 
+- [x] Rofi for Network manager
+- [x] Rofi for emoji
+- [ ] Rofi for calendar
 - [ ] Config vim
+- [ ] Config fish shell
 - [ ] Config vscodium
 - [ ] Config bashtop
 - [ ] Port few windows shortcuts
   - [x] Minimize window (workaround)
   - [ ] Show desktop   
+- [ ] Rofi qr code
+- [ ] Rofi bitwarden
