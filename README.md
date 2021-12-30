@@ -1,5 +1,5 @@
 # Qtile_config
-This is my config for my qtile WM. A noobs work.
+This is my config for my qtile WM. In working.
 
 Apps Used:
 - Qtile (WM)
@@ -12,9 +12,9 @@ Apps Used:
 - Kitty (Terminal emulator)
 - VScodium (text editor)
 - Dracula theme (mostly)
-- fm6000
-- 
-
+- rxfeed 
+- fish (shell)
+- greenclip (for rofi-clipboard)
 TODO:
 
 - [x] Autostart (require further personal config) 
