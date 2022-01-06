@@ -1,7 +1,15 @@
+from typing import List  # noqa: F401
+
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile import hook
+from libqtile.utils import guess_terminal
+
+
+# Autostart
+import os
+import subprocess
+from libqtile import hook, qtile
 
 # default apps
 terminal = "kitty"
@@ -9,6 +17,18 @@ browser = "librewolf"
 file_manager = "dolphin"
 music = "spotify"
 mod = "mod4"
+
+
+def window_to_prev_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+
+
+def window_to_next_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
 
 
 keys = [
@@ -61,6 +81,7 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
+    Key([mod], "t", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle betq"een different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -98,7 +119,7 @@ keys = [
     Key(
         ["mod1", "control"],
         "Delete",
-        lazy.spawn("rofi -show powermenu -modi powermenr:~/./rofi-power-menu"),
+        lazy.spawn("rofi -show powermenu -modi powermenu:~/./rofi-power-menu"),
     ),
     # rofi-clipboard
     Key([mod], "v", lazy.spawn("rofi -show clipboard")),
@@ -106,31 +127,7 @@ keys = [
     Key([mod], "c", lazy.spawn("rofi -show calc")),
     # rofi-network-menu
     Key([mod], "w", lazy.spawn("./.config/qtile/rofi-wifi-menu")),
+    # Key([mod, "control"], "Right", lazy.spawn(window_to_prev_group)),
+    Key([mod], "b", lazy.spawn("librewolf --private-window")),
+    Key([mod], "e", lazy.spawn("dolphin")),
 ]
-
-
-groups = [Group(i) for i in "123456789"]
-
-for i in groups:
-    keys.extend(
-        [
-            # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
-        ]
-    )

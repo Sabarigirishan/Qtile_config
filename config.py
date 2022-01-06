@@ -1,6 +1,8 @@
 from key import *
 from layout import *
 from libqtile.log_utils import logger
+from libqtile.dgroups import simple_key_binder
+
 import os
 import subprocess
 
@@ -50,3 +52,24 @@ reconfigure_screens = True
 auto_minimize = True
 
 wmname = "LG3D"
+
+
+groups = [
+    Group("🥳", layout="columns", matches=[Match(wm_class=["Spotify"])]),
+    Group(
+        "🙇🏻‍♂️",
+        layout="columns",
+        matches=[
+            Match(wm_class=["Microsoft Teams - Preview"]),
+        ],
+    ),
+    Group("🥱", layout="columns"),
+    Group("🗑", layout="columns"),
+    Group("5", layout="columns"),
+    Group("6", layout="columns"),
+    Group("7", layout="columns"),
+    Group("8", layout="columns"),
+    Group("9", layout="columns"),
+]
+
+dgroups_key_binder = simple_key_binder(mod)
