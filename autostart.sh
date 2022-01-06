@@ -1,10 +1,10 @@
 #!/bin/fish
 
 # compositor
-picom --experimental-backend &
+picom --config ~/.config/picom/picom.conf
 
 # reload background
-nitrogen --restore &
+feh --bg-scale 'Downloads/Compressed/wallpaper-master/manjaro.png'
 
 imwheel -b 45
 
