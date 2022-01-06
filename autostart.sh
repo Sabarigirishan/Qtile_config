@@ -1,7 +1,7 @@
 #!/bin/fish
 
 # compositor
-picom --config ~/.config/picom/picom.conf
+picom --config ~/.config/picom/picom.conf -b
 
 # reload background
 feh --bg-scale 'Downloads/Compressed/wallpaper-master/manjaro.png'
