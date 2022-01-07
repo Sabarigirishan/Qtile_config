@@ -15,6 +15,7 @@ Apps Used:
 - rxfeed 
 - fish (shell)
 - greenclip (for rofi-clipboard)
+
 TODO:
 
 - [x] Autostart (require further personal config) 
