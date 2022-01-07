@@ -2,15 +2,15 @@ from key import *
 from layout import *
 from libqtile.log_utils import logger
 from libqtile.dgroups import simple_key_binder
-
+from libqtile.lazy import lazy
 import os
 import subprocess
 
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser("~")
     subprocess.call([home + "/.config/qtile/autostart.sh"])
+    lazy.spawn(emote)
 
 
 mod = "mod4"

@@ -1,5 +1,5 @@
 from typing import List  # noqa: F401
-
+from libqtile.config import Key
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -17,6 +17,7 @@ browser = "librewolf"
 file_manager = "dolphin"
 music = "spotify"
 mod = "mod4"
+home = os.path.expanduser("~")
 
 
 def window_to_prev_group(qtile):
@@ -129,5 +130,16 @@ keys = [
     Key([mod], "w", lazy.spawn("./.config/qtile/rofi-wifi-menu")),
     # Key([mod, "control"], "Right", lazy.spawn(window_to_prev_group)),
     Key([mod], "b", lazy.spawn("librewolf --private-window")),
+    # For file manager
     Key([mod], "e", lazy.spawn("dolphin")),
+    # Screenshot-area
+    Key(
+        ["control"],
+        "Print",
+        lazy.spawn([home + "/.config/qtile/screenshot_a.sh"]),
+    ),
+    # Screenshot-window
+    Key([], "Print", lazy.spawn([home + "/.config/qtile/screenshot_w.sh"])),
+    # Screenshot-window
+    Key([mod], "Print", lazy.spawn([home + "/.config/qtile/screenshot_d.sh"])),
 ]
