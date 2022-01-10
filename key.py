@@ -127,7 +127,7 @@ keys = [
     # rofi-calc
     Key([mod], "c", lazy.spawn("rofi -show calc")),
     # rofi-network-menu
-    Key([mod], "w", lazy.spawn("./.config/qtile/rofi-wifi-menu")),
+    Key([mod], "W", lazy.spawn("./.config/qtile/rofi-wifi-menu")),
     # Key([mod, "control"], "Right", lazy.spawn(window_to_prev_group)),
     Key([mod], "b", lazy.spawn("librewolf --private-window")),
     # For file manager

@@ -19,12 +19,12 @@ Apps Used:
 TODO:
 
 - [x] Autostart (require further personal config) 
-- [x] KDE theme 
-- [ ] Top bar and bottom bar
-- [ ] Music player
-  - [ ] Spotify
-  - [ ] MOCP
-  - [ ] Cava (it's not a player but added) 
+- [x] KDE theme support 
+- [x] Top bar and bottom bar
+- [x] Music player
+  - [x] Spotify
+  - [x] MOCP
+  - [x] Cava (it's not a player but added) 
 - [ ] Layout
 - [ ] More widgets
 - [ ] Better comments
@@ -42,12 +42,10 @@ TODO:
 - [x] Rofi for Network manager
 - [x] Rofi for emoji
 - [ ] Rofi for calendar
-- [ ] Config vim
+- [ ] Config nvim
 - [ ] Config fish shell
 - [ ] Config vscodium
-- [ ] Config bashtop
 - [ ] Port few windows shortcuts
   - [x] Minimize window (workaround)
   - [ ] Show desktop   
-- [ ] Rofi qr code
 - [ ] Rofi bitwarden
