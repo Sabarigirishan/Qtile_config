@@ -1,6 +1,8 @@
 #!/bin/bash
+# numlockx
 
-echo "This script is currently for arch-linux, yay is necessary."
+
+echo "This script is currently for arch-linux, yay is necessary. Try to remove packages wich are not needed"
 sleep 2
 
 echo "want to update?"
@@ -49,34 +51,59 @@ then
 fi
 
 echo "======================================================================================"
-echo "Installing base install (imp)"
+echo "Installing base install (imp):"
+echo "xf86-video-ati, lib32-mesa, mandb, xorg, xorg-init, picom-tryone-git, kitty, polkit, acpi, qt5ct, bluedevil, lightdm, xorg-server, xterm "
 echo "======================================================================================"
 sleep 1
-yay -S xf86-video-ati lib32-mesa mandb xorg xorg-init picom-tryone-git kitty polkit acpi --needed
+yay -S xf86-video-ati lib32-mesa mandb xorg xorg-init picom-tryone-git kitty polkit acpi qt5ct bluedevil lightdm xorg-server xterm --needed
 
 echo "======================================================================================"
-echo "Installing packages related to fonts and emoji"
+echo "Installing packages related audio:"
+echo "pulseaudio, pulsemixer, moc"
 echo "======================================================================================"
 sleep 1
-yay -S ttf-nerd-fonts-symbols ttf-nerd-fonts-icons ttf-twemoji ttf-hack noto-font-emoji x11-emoji-picker-git --needed
+yay -S pulseaudio pavucontrol moc--needed
+
 
 echo "======================================================================================"
-echo "Installing terminal based packages"
+echo "Installing packages related to fonts and emoji:"
+echo "ttf-nerd-fonts-symbols, ttf-nerd-fonts-icons, ttf-twemoji, ttf-hack, noto-font-emoji, x11-emoji-picker-git, ttg-dejavu "
 echo "======================================================================================"
 sleep 1
-yay -S fish bashtop neofetch lsd tmatrix rxfetch rofi neovim feh winetricks xdman man --needed
+yay -S ttf-nerd-fonts-symbols ttf-nerd-fonts-icons ttf-twemoji ttf-hack noto-font-emoji x11-emoji-picker-git ttg-dejavu --needed
 
 echo "======================================================================================"
-echo "Installing tools for daily work"
+echo "Installing terminal based packages:"
+echo "fish, bashtop, neofetch, lsd, tmatrix, rofi, neovim, feh, man, bat, curl, p7zip, cowsay, greed"
 echo "======================================================================================"
 sleep 1
-yay -S qpdfview bleachbit vscodium-bin qtile qalculate-gtk xdman octave onlyoffice-desktopeditors scrot --needed
+yay -S fish bashtop neofetch lsd tmatrix rofi neovim feh xdman man bat curl p7zip cowsay greed --needed
 
 echo "======================================================================================"
-echo "Installing packages for entertainment purposes"
+echo "Installing tools for daily work:"
+echo "qpdfview, bleachbit, vscodium-bin, qalculate-gtk, xdman, onlyoffice-desktopeditors, scrot, thunar"
+echo "======================================================================================"
+sleep 1
+yay -S qpdfview bleachbit vscodium-bin qalculate-gtk xdman onlyoffice-desktopeditors scrot thunar --needed
+
+echo "======================================================================================"
+echo "Installing packages for entertainment purposes:"
+echo "smplayer, spotify, telegram, qbittorrent, smtube"
 echo "======================================================================================"
 sleep 1
 yay -S smplayer spotify telegram qbittorrent smtube --needed
+
+echo "======================================================================================"
+echo "Adding and Installing ungoogled-chromium-bin:"
+echo "Ungoogled-chromium"
+echo "======================================================================================"
+sleep 1
+curl -s 'https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key' | sudo pacman-key -a -
+echo '
+[home_ungoogled_chromium_Arch]
+SigLevel = Required TrustAll
+Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' | sudo tee --append /etc/pacman.conf
+sudo pacman -Sy
 
 echo "======================================================================================"
 echo "Installing optional packages(These are really optional types)"
@@ -85,10 +112,52 @@ sleep 1
 
 echo "Want to install following packages (y/n):"
 echo ">ttf-ms-fonts:"
-read optional_1
-if [[ $optional_1 == 'y' || $optional_1 == 'Y' ]]
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
 then
     yay -S ttf-ms-fonts --needed
+fi
+
+echo ">rxfetch (fetch script)"
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
+then
+    yay -S rxfetch --needed
+fi
+
+echo ">GNU Octave"
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
+then
+    yay -S octave --needed
+fi
+
+echo ">Winetricks (it will install wine too)"
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
+then
+    yay -S winetricks --needed
+fi
+
+echo ">Font-manager-git"
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
+then
+    yay -S font-manager-git --needed
+fi
+
+echo ">tuir (Terminal reddit client)"
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
+then
+    yay -S tuir --needed
+fi
+
+echo ">ranger (Terminal file-manager)"
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
+then
+    yay -S ranger --needed
 fi
 
 echo "======================================================================================"
@@ -139,11 +208,9 @@ case "$DE" in
     "5") echo "Skipping."
 esac
 
-
-
 echo "======================================================================================"
 echo "Cleaning all cache and unused packages (won't cause much issue)"
 echo "======================================================================================"
 sleep 1
-yay -Sc && yay -c
+yay -Yc && yay -c && yay -Sc
 
