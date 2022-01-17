@@ -112,7 +112,7 @@ screens = [
                     padding=20,
                 ),
                 widget.TextBox(
-                    text="💡",
+                    text="",
                 ),
                 widget.Backlight(
                     font="FiraCode Nerd Font",
@@ -124,9 +124,7 @@ screens = [
                     size_percent=60,
                     padding=10,
                 ),
-                widget.TextBox(
-                    text="📢",
-                ),
+                widget.TextBox(text="   "),
                 widget.PulseVolume(
                     font="FiraCode Nerd Font",
                 ),
@@ -136,7 +134,7 @@ screens = [
                     padding=10,
                 ),
                 widget.TextBox(
-                    text="⚡",
+                    text="    ",
                 ),
                 widget.Battery(
                     font="FiraCode Nerd Font",
@@ -151,7 +149,8 @@ screens = [
                     padding=10,
                 ),
                 widget.TextBox(
-                    text="📆",
+                    text="     ",
+                    fontsize="20",
                 ),
                 widget.Clock(
                     font="FiraCode Nerd Font",
@@ -164,3 +163,42 @@ screens = [
         ),
     ),
 ]
+
+# time 
+# wifi 
+# work or exp 
+# home     
+# science 
+# study 
+# speed0meter  
+# empty calendar   
+# clock 
+# bluetooth 
+# settings 
+# location 
+# error 
+# shutdown 
+# lock   
+# code 
+# bug 
+# notification   
+# tiling  
+# floating 
+# wifi 
+# camera 
+# chill 
+# tabbed 
+# clipboard   
+# cpu 
+# tabbed 
+# volume     
+# pause 
+# play 
+# thining or backf=ground 
+# trash 
+# cakc 
+# pin or mnimize 
+# party 
+# movies 
+# work 
+# idk 
