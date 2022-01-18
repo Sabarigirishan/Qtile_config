@@ -1,6 +1,23 @@
 #!/bin/bash
 # numlockx
 
+#   yay -S xf86-video-fbdev xorg xorg-xinit feh picom neovim kitty librewolf
+#   install yay
+#   base-devel
+#   yay -s openbox 
+#   cp /etc/X11/xinitrc /home/sam/.xinitrc
+#   remove these stuff from twm
+#   feb --bg-scale wallpaper
+#   picom &
+#   exec awesome
+#
+#	
+#
+#   
+#   
+#   
+#   
+#   
 
 echo "This script is currently for arch-linux, yay is necessary. Try to remove packages wich are not needed"
 sleep 2
@@ -45,8 +62,8 @@ then
     echo "Installing yay (imp)"
     echo "======================================================================================"
     sleep 1
-    git clone http://aur.archlinux.org/yay-git.git && 
-        cd yay git &&
+    git clone http://aur.archlinux.org/yay-git.git 
+        cd yay git
         mkaepkg -si
 fi
 
@@ -55,22 +72,22 @@ echo "Installing base install (imp):"
 echo "xf86-video-ati, lib32-mesa, mandb, xorg, xorg-init, picom-tryone-git, kitty, polkit, acpi, qt5ct, bluedevil, lightdm, xorg-server, xterm "
 echo "======================================================================================"
 sleep 1
-yay -S xf86-video-ati lib32-mesa mandb xorg xorg-init picom-tryone-git kitty polkit acpi qt5ct bluedevil lightdm xorg-server xterm --needed
+yay -S xf86-video-ati lib32-mesa mandb xorg xorg-init picom-tryone-git kitty polkit acpi qt5ct ly xorg-server xterm --needed
 
 echo "======================================================================================"
 echo "Installing packages related audio:"
 echo "pulseaudio, pulsemixer, moc"
 echo "======================================================================================"
 sleep 1
-yay -S pulseaudio pavucontrol moc--needed
+yay -S pulseaudio pulsemixer moc --needed
 
 
 echo "======================================================================================"
 echo "Installing packages related to fonts and emoji:"
-echo "ttf-nerd-fonts-symbols, ttf-nerd-fonts-icons, ttf-twemoji, ttf-hack, noto-font-emoji, x11-emoji-picker-git, ttg-dejavu "
+echo "ttf-nerd-fonts-symbols, ttf-nerd-fonts-icons, ttf-twemoji, ttf-hack, noto-font-emoji, x11-emoji-picker-git"
 echo "======================================================================================"
 sleep 1
-yay -S ttf-nerd-fonts-symbols ttf-nerd-fonts-icons ttf-twemoji ttf-hack noto-font-emoji x11-emoji-picker-git ttg-dejavu --needed
+yay -S ttf-nerd-fonts-symbols ttf-nerd-fonts-icons ttf-twemoji ttf-hack noto-font-emoji x11-emoji-picker-git --needed
 
 echo "======================================================================================"
 echo "Installing terminal based packages:"
@@ -88,10 +105,10 @@ yay -S qpdfview bleachbit vscodium-bin qalculate-gtk xdman onlyoffice-desktopedi
 
 echo "======================================================================================"
 echo "Installing packages for entertainment purposes:"
-echo "smplayer, spotify, telegram, qbittorrent, smtube"
+echo "smplayer, spotify, smtube"
 echo "======================================================================================"
 sleep 1
-yay -S smplayer spotify telegram qbittorrent smtube --needed
+yay -S smplayer spotify smtube --needed
 
 echo "======================================================================================"
 echo "Adding and Installing ungoogled-chromium-bin:"
