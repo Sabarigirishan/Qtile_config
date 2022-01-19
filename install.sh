@@ -72,7 +72,7 @@ echo "Installing base install (imp):"
 echo "xf86-video-ati, lib32-mesa, mandb, xorg, xorg-init, picom-tryone-git, kitty, polkit, acpi, qt5ct, bluedevil, lightdm, xorg-server, xterm "
 echo "======================================================================================"
 sleep 1
-yay -S xf86-video-ati lib32-mesa mandb xorg xorg-init picom-tryone-git kitty polkit acpi qt5ct ly xorg-server xterm --needed
+yay -S xf86-video-ati lib32-mesa mandb lxappearance qt5ct xorg-init picom-tryone-git kitty polkit acpi qt5ct ly xorg-server xterm xorg --needed
 
 echo "======================================================================================"
 echo "Installing packages related audio:"
@@ -177,6 +177,13 @@ then
     yay -S ranger --needed
 fi
 
+echo ">guvcview (Camera)"
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
+then
+    yay -S guvcview --needed
+fi
+
 echo "======================================================================================"
 echo "Installing WM"
 echo "======================================================================================"
@@ -231,3 +238,14 @@ echo "==========================================================================
 sleep 1
 yay -Yc && yay -c && yay -Sc
 
+echo "Want to config system on the go?"
+echo "(y/n)"
+read conf
+if [[ $conf == 'y' || $conf == 'Y' ]]
+then
+    echo "======================================================================================"
+    echo "Making few edits to config"
+    echo "======================================================================================"
+    sleep 1
+    systemctl enable ly service
+fi
