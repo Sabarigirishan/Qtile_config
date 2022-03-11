@@ -34,10 +34,10 @@ fi
 
 echo "======================================================================================"
 echo "Installing base install (imp):"
-echo "xf86-video-ati, lib32-mesa, mandb, xorg, xorg-init, picom-tryone-git, kitty, nmtui, polkit, acpi, qt5ct, bluedevil, xorg-server, xterm, xautolock"
+echo "xf86-video-ati, lib32-mesa, mandb, xorg, xorg-init, picom-tryone-git, kitty, nmtui, polkit, acpi, qt5ct, bluedevil, xorg-server, xterm, xautolock iputil xclip"
 echo "======================================================================================"
 sleep 1
-yay -S xf86-video-ati lib32-mesa mandb lxappearance blueman-git qt5ct xorg-init picom-tryone-git kitty nmtui polkit acpi qt5ct ly xorg-server xterm xorg xautolock --needed
+yay -S xf86-video-ati lib32-mesa mandb lxappearance blueman-git qt5ct xorg-init picom-tryone-git kitty nmtui polkit acpi qt5ct ly xorg-server xterm xorg xautolock iputil xclip --needed
 
 echo "======================================================================================"
 echo "Installing packages related audio:"
@@ -70,10 +70,10 @@ yay -S qpdfview bleachbit guvcview vscodium-bin qalculate-gtk xdman librewolf-bi
 
 echo "======================================================================================"
 echo "Installing packages for entertainment purposes:"
-echo "spotify, mpv, spicetify-cli, mpd, ncmpcpp, ytfzf, corny-jokes-git myman youplay 2048"
+echo "spotify,lltag, mpv, spicetify-cli, mpd, ncmpcpp, ytfzf, corny-jokes-git myman youplay 2048"
 echo "======================================================================================"
 sleep 1
-yay -S spotify spicetify-cli mpv mpd ncmpcpp ytfzf corny-jokes-git myman youplay 2048 --needed
+yay -S spotify lltag spicetify-cli mpv mpd ncmpcpp ytfzf corny-jokes-git myman youplay 2048 --needed
 
 echo "======================================================================================"
 echo "Installing packages for entertainment purposes:"
@@ -227,4 +227,6 @@ then
     echo "======================================================================================"
     sleep 1
     systemctl enable ly service
+    sudo echo "ILoveCandy" > /etc/pacman.conf
+
 fi
