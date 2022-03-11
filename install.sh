@@ -2,49 +2,14 @@
 # numlockx
 
 #   yay -S xf86-video-fbdev xorg xorg-xinit feh picom neovim kitty librewolf
-#   install yay
-#   base-devel
 #   yay -s openbox 
 #   cp /etc/X11/xinitrc /home/sam/.xinitrc
 #   remove these stuff from twm
 #   feb --bg-scale wallpaper
 #   picom &
-#   exec awesome
-#
-#	
-#
-#   
-#   
-#   
-#   
-#   
 
-echo "This script is currently for arch-linux, yay is necessary. Try to remove packages wich are not needed"
+echo "This script is currently for arch-linux, yay is necessary."
 sleep 2
-
-echo "want to update?"
-echo "(y/n):" 
-read update
-
-if [[ $update == 'y' || $update == 'Y' ]]
-then 
-    echo "======================================================================================"
-    echo "Installing updating"
-    echo "======================================================================================"
-    sleep 1
-
-    yay -Syu
-    echo "Want to reboot?"
-    echo "(y/n):"
-    read reb
-    if [[ $reb == 'y' || $reb == 'Y' ]]
-    then 
-        sudo reboot
-    fi
-elif [[ $update != 'y' ]]
-then
-    echo "Not updating."
-fi
 
 echo "======================================================================================"
 echo "Installing base-devel(imp)"
@@ -69,10 +34,10 @@ fi
 
 echo "======================================================================================"
 echo "Installing base install (imp):"
-echo "xf86-video-ati, lib32-mesa, mandb, xorg, xorg-init, picom-tryone-git, kitty, polkit, acpi, qt5ct, bluedevil, lightdm, xorg-server, xterm "
+echo "xf86-video-ati, lib32-mesa, mandb, xorg, xorg-init, picom-tryone-git, kitty, nmtui, polkit, acpi, qt5ct, bluedevil, xorg-server, xterm, xautolock"
 echo "======================================================================================"
 sleep 1
-yay -S xf86-video-ati lib32-mesa mandb lxappearance qt5ct xorg-init picom-tryone-git kitty polkit acpi qt5ct ly xorg-server xterm xorg --needed
+yay -S xf86-video-ati lib32-mesa mandb lxappearance blueman-git qt5ct xorg-init picom-tryone-git kitty nmtui polkit acpi qt5ct ly xorg-server xterm xorg xautolock --needed
 
 echo "======================================================================================"
 echo "Installing packages related audio:"
@@ -91,33 +56,40 @@ yay -S ttf-nerd-fonts-symbols ttf-nerd-fonts-icons ttf-twemoji ttf-hack noto-fon
 
 echo "======================================================================================"
 echo "Installing terminal based packages:"
-echo "fish, bashtop, neofetch, lsd, tmatrix, rofi, neovim, feh, man, bat, curl, p7zip, cowsay, greed"
+echo "zsh, bashtop, neofetch, lsd, tmatrix-git, rofi, neovim, feh, fzf, colorpicker, espeak, figlet, man, bat, cpufetch, curl, p7zip, cowsay, greed, colorpicker"
 echo "======================================================================================"
 sleep 1
-yay -S fish bashtop neofetch lsd tmatrix rofi neovim feh xdman man bat curl p7zip cowsay greed --needed
+yay -S zsh bashtop fish wallset ncdu neofetch lsd tmatrix-git rofi neovim feh fzf colorpicker figlet espeak man bat cpufetch curl p7zip cowsay greed colorpicker --needed
 
 echo "======================================================================================"
 echo "Installing tools for daily work:"
-echo "qpdfview, bleachbit, vscodium-bin, qalculate-gtk, xdman, onlyoffice-desktopeditors, scrot, thunar"
+echo "qpdfview, bleachbit, vscodium-bin, qalculate-gtk, xdman, librewolf-bin, libreoffice-fresh, scrot, leafpad, i3lock-color-git, imagemagick, thunar"
 echo "======================================================================================"
 sleep 1
-yay -S qpdfview bleachbit vscodium-bin qalculate-gtk xdman onlyoffice-desktopeditors scrot thunar --needed
+yay -S qpdfview bleachbit guvcview vscodium-bin qalculate-gtk xdman librewolf-bin libreoffice-fresh scrot leafpad i3lock-color-git imagemagick thunar --needed
 
 echo "======================================================================================"
 echo "Installing packages for entertainment purposes:"
-echo "smplayer, spotify, smtube"
+echo "spotify, mpv, spicetify-cli, mpd, ncmpcpp, ytfzf, corny-jokes-git myman youplay 2048"
 echo "======================================================================================"
 sleep 1
-yay -S smplayer spotify smtube --needed
+yay -S spotify spicetify-cli mpv mpd ncmpcpp ytfzf corny-jokes-git myman youplay 2048 --needed
 
 echo "======================================================================================"
-echo "Adding and Installing ungoogled-chromium-bin:"
+echo "Installing packages for entertainment purposes:"
+echo "spotify, mpv, mpd, ncmpcpp, ytfzf, corny-jokes-git myman"
+echo "======================================================================================"
+sleep 1
+yay -S rofi-calc rofi-bluetooth-git rofi-greenclip rofi-emoji rofi-calc --needed
+
+echo "======================================================================================"
+echo "Adding ungoogled-chromium-bin repo and Installing it:"
 echo "Ungoogled-chromium"
 echo "======================================================================================"
 sleep 1
 curl -s 'https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key' | sudo pacman-key -a -
 echo '
-[home_ungoogled_chromium_Arch]
+[Ungoogled-Chromium]
 SigLevel = Required TrustAll
 Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' | sudo tee --append /etc/pacman.conf
 sudo pacman -Sy
@@ -177,11 +149,18 @@ then
     yay -S ranger --needed
 fi
 
-echo ">guvcview (Camera)"
+echo ">Android device mounting"
 read optional
 if [[ $optional == 'y' || $optional == 'Y' ]]
 then
-    yay -S guvcview --needed
+    yay -S mtpfs gvs-gphoto2 gvs-mpt --needed
+fi
+
+echo ">OCR support (python is also needed)"
+read optional
+if [[ $optional == 'y' || $optional == 'Y' ]]
+then
+    yay -S python-pip ocrmypdf --needed && pip install pdfplumber
 fi
 
 echo "======================================================================================"
@@ -213,30 +192,30 @@ echo "Installing DE"
 echo "======================================================================================"
 sleep 1
 
-echo ">Select WM:"
-echo "1. Gnome"
-echo "2. Plasma"
-echo "3. Deepin"
-echo "4. Mate"
-echo "5. Skip"
-read DE
-case "$DE" in
-    "1") yay -S gnome --needed
-    ;;
-    "2") yay -S plasma-desktop sddm --needed
-    ;;
-    "3") yay -S deepin --needed
-    ;;
-    "4") yay -S mate --needed
-    ;;
-    "5") echo "Skipping."
-esac
+# echo ">Select WM:"
+# echo "1. Gnome"
+# echo "2. Plasma"
+# echo "3. Deepin"
+# echo "4. Mate"
+# echo "5. Skip"
+# read DE
+# case "$DE" in
+#     "1") yay -S gnome --needed
+#     ;;
+#     "2") yay -S plasma-desktop sddm --needed
+#     ;;
+#     "3") yay -S deepin --needed
+#     ;;
+#     "4") yay -S mate --needed
+#     ;;
+#     "5") echo "Skipping."
+# esac
 
 echo "======================================================================================"
 echo "Cleaning all cache and unused packages (won't cause much issue)"
 echo "======================================================================================"
 sleep 1
-yay -Yc && yay -c && yay -Sc
+yay -Yc && yay -c && yay -Sc && sudo pacman -Rs $ (pacman -Qtdq)
 
 echo "Want to config system on the go?"
 echo "(y/n)"
